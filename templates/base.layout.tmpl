@@ -1,3 +1,4 @@
+{{define "base"}}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,9 +12,12 @@
         integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vanillajs-datepicker@1.2.0/dist/css/datepicker-bs5.min.css">
     <link rel="stylesheet" type="text/css" href="https://unpkg.com/notie/dist/notie.min.css">
-    <link rel="stylesheet" type="text/css" href="static/css/styles.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/styles.css">
+
 </head>
+
 <body>
+
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
           <a class="navbar-brand" href="#">Navbar</a>
@@ -23,61 +27,35 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
               <li class="nav-item">
-                <a class="nav-link" href="index.html">Home</a>
+                <a class="nav-link" href="/">Home</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="about.html">About</a>
+                <a class="nav-link" href="/about">About</a>
               </li>
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                   Rooms
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <li><a class="dropdown-item" href="double.html">double</a></li>
-                  <li><a class="dropdown-item" href="coeanview.html">Oceanview</a></li>
+                  <li><a class="dropdown-item" href="/double">Double</a></li>
+                  <li><a class="dropdown-item" href="/oceanview">Oceanview</a></li>
                 </ul>
               </li>
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="book.html">Book Now</a>
+                <a class="nav-link active" href="/search-availability" tabindex="-1" aria-disabled="true">Book Now</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="contact.html">Contact</a>
+                <a class="nav-link" href="/contact">Contact</a>
               </li>
             </ul>
           </div>
         </div>
       </nav>
 
-      
-    <div class="container">
+    {{block "content" .}}
 
-        <div classs="row">
-            <div class="col-md-3"></div>
-            <div class="col-md-6">
-                <h1 class="text-center mt-4">Search for availability</h1>
-                
-                <form class="needs-validation" action="book.html" method="get" novalidate>               
-                  <div class="row" id="reservation-picker">
+    {{end}}
 
-                    <div class="col">
-                      <input required type="text" name="start" class="form-control" placeholder="Arrival Date">
-                      <div class="invalid-feedback">Please choose a starting date.</div>
-                    </div>
-
-                    <div class="col">
-                      <input required type="text" name="end" class="form-control" placeholder="Departure Date"> 
-                      <div class="invalid-feedback">Please choose an end date.</div>
-                    </div>
-
-                  </div>
-
-                  <button type="submit" class="btn btn-primary">Submit</button>
-                </form>
-                
-            </div>
-        </div>
-
-    </div>
 
     <div class="row my-footer">
         <div class="col">
@@ -96,6 +74,10 @@
     <script src="https://cdn.jsdelivr.net/npm/vanillajs-datepicker@1.2.0/dist/js/datepicker-full.min.js"></script>
     <script src="https://unpkg.com/notie"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    {{block "js" .}}
+
+    {{end}}
 
     <script>
       let attention = Prompt();
@@ -119,31 +101,6 @@
             }, false)
           })
       })()
-
-      document.getElementById("colourButton").addEventListener("click", function(){
-        let html = `
-        <form id="check-availability-form" action ="" method="post" novalidate class="needs-validation search-form">
-          <div class="form-row">
-            <div class="col">
-              <div class="row" id="reservation-dates-model">
-                <div class="col">
-                  <input disabled required class="form-control" type="text" name="start" id="start" placeholder="Arrival">
-                </div>
-                <div class="col">
-                  <input disabled required class="form-control" type="text" name="end" id="end" placeholder="Departure">
-                </div>
-              </div>
-            </div>
-          </div>
-        </form>
-        `
-        attention.custom({msg: html, title: "Choose your dates"})
-      })
-
-      const elem = document.getElementById('reservation-picker');
-      const rangepicker = new DateRangePicker(elem, {
-      // ...options
-      }); 
 
       function notify(msg, msgType){
         notie.alert({
@@ -249,3 +206,4 @@
     </script>
 </body>
 </html>
+{{end}}
