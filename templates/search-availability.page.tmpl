@@ -9,7 +9,7 @@
             <h1 class="text-center mt-4">Search for availability</h1>
             
             <form action="/search-availability" method="post" novalidate class="needs-validation">
-                <input type="text" name="csrf_token" value="{{.CSRFToken}}">
+                <input type="hidden" name="csrf_token" value="{{.CSRFToken}}">
                 <div class="row" id="reservation-picker">
 
                     <div class="col">

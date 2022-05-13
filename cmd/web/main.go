@@ -6,9 +6,9 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/ExpanseVR/bookings/pkg/config"
-	"github.com/ExpanseVR/bookings/pkg/handlers"
-	"github.com/ExpanseVR/bookings/pkg/render"
+	"github.com/ExpanseVR/bookings/internal/config"
+	"github.com/ExpanseVR/bookings/internal/handlers"
+	"github.com/ExpanseVR/bookings/internal/render"
 	"github.com/alexedwards/scs/v2"
 )
 

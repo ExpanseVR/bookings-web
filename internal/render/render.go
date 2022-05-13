@@ -8,8 +8,8 @@ import (
 	"net/http"
 	"path/filepath"
 
-	"github.com/ExpanseVR/bookings/pkg/config"
-	"github.com/ExpanseVR/bookings/pkg/models"
+	"github.com/ExpanseVR/bookings/internal/config"
+	"github.com/ExpanseVR/bookings/internal/models"
 	"github.com/justinas/nosurf"
 )
 
