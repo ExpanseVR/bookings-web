@@ -1,6 +1,7 @@
 package main
 
 import (
+	"encoding/gob"
 	"fmt"
 	"log"
 	"net/http"
@@ -8,6 +9,7 @@ import (
 
 	"github.com/ExpanseVR/bookings/internal/config"
 	"github.com/ExpanseVR/bookings/internal/handlers"
+	"github.com/ExpanseVR/bookings/internal/models"
 	"github.com/ExpanseVR/bookings/internal/render"
 	"github.com/alexedwards/scs/v2"
 )
@@ -19,6 +21,7 @@ const portNumber = ":8080"
 var session *scs.SessionManager
 
 func main() {
+	gob.Register(models.Reservation{})
 	//change this to true when in production
 	app.InProduction = false
 
